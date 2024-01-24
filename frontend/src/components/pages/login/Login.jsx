@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../../../context/userContext.js';
 
 function Login() {
   const navigate = useNavigate();
+  const { setUser, setAdmin } = useContext(UserContext);
   const [loginUser, setLoginUser] = useState({
     email: '',
     password: '',
@@ -16,14 +18,16 @@ function Login() {
   };
   const handleLoginUser = (e) => {
     e.preventDefault();
-    console.log(loginUser);
+
     axios
       .post('/api/ecommerce/user/login', loginUser)
       .then((result) => {
         if (result.data.user.role === 'user') {
+          setUser(result.data.user);
           navigate('/login/user-dashboard');
         }
         if (result.data.user.role === 'admin') {
+          setAdmin(result.data.user);
           navigate('/login/admin-dashboard');
         }
       })

@@ -8,29 +8,33 @@ import GetUserDetails from './components/userDashboard/getUserDetails/GetUserDet
 import UpdatePassword from './components/userDashboard/updatePassword/UpdatePassword.jsx';
 import UpdateProfile from './components/userDashboard/UpdateProfile/UpdateProfile.jsx';
 import Profile from './components/userDashboard/profile/Profile.jsx';
+import UserContextProvider from './context/UserContextProvider.jsx';
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navbar />}>
-            <Route index="true" element={<Home />}></Route>
-            <Route path="/category" element={<Category />}></Route>
-            <Route path="/signup" element={<Signup />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/login/user-dashboard" element={<UserDashboard />}>
-              <Route path="" element={<Profile />} />
-              <Route path="get-user-details" element={<GetUserDetails />} />
-              <Route path="update-password" element={<UpdatePassword />} />
-              <Route path="update-profile" element={<UpdateProfile />} />
+      <UserContextProvider>
+        {' '}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navbar />}>
+              <Route index="true" element={<Home />}></Route>
+              <Route path="/category" element={<Category />}></Route>
+              <Route path="/signup" element={<Signup />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/login/user-dashboard" element={<UserDashboard />}>
+                <Route path="" element={<Profile />} />
+                <Route path="get-user-details" element={<GetUserDetails />} />
+                <Route path="update-password" element={<UpdatePassword />} />
+                <Route path="update-profile" element={<UpdateProfile />} />
+              </Route>
+              <Route
+                path="/login/admin-dashboard"
+                element={<AdminDashboard />}
+              ></Route>
             </Route>
-            <Route
-              path="/login/admin-dashboard"
-              element={<AdminDashboard />}
-            ></Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </UserContextProvider>
     </>
   );
 }
