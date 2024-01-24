@@ -34,6 +34,16 @@ function Navbar() {
               Login
             </Link>
           </li>
+          <li>
+            <Link to="/login/user-dashboard" className="nav-links">
+              User Account
+            </Link>
+          </li>
+          <li>
+            <Link to="/login/admin-dashboard" className="nav-links">
+              Admin Account
+            </Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
