@@ -7,7 +7,7 @@ function UserDashboard() {
     axios
       .get('/api/ecommerce/user/logout')
       .then((result) => {
-        console.log(result.data);
+        localStorage.removeItem('valid');
         navigate('/login');
       })
       .catch((error) => {

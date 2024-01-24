@@ -9,6 +9,7 @@ import UpdatePassword from './components/userDashboard/updatePassword/UpdatePass
 import UpdateProfile from './components/userDashboard/UpdateProfile/UpdateProfile.jsx';
 import Profile from './components/userDashboard/profile/Profile.jsx';
 import UserContextProvider from './context/UserContextProvider.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 function App() {
   return (
     <>
@@ -21,7 +22,14 @@ function App() {
               <Route path="/category" element={<Category />}></Route>
               <Route path="/signup" element={<Signup />}></Route>
               <Route path="/login" element={<Login />}></Route>
-              <Route path="/login/user-dashboard" element={<UserDashboard />}>
+              <Route
+                path="/login/user-dashboard"
+                element={
+                  <PrivateRoute>
+                    <UserDashboard />
+                  </PrivateRoute>
+                }
+              >
                 <Route path="" element={<Profile />} />
                 <Route path="get-user-details" element={<GetUserDetails />} />
                 <Route path="update-password" element={<UpdatePassword />} />

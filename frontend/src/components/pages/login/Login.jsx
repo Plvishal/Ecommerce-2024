@@ -23,10 +23,12 @@ function Login() {
       .post('/api/ecommerce/user/login', loginUser)
       .then((result) => {
         if (result.data.user.role === 'user') {
+          localStorage.setItem('valid', true);
           setUser(result.data.user);
           navigate('/login/user-dashboard');
         }
         if (result.data.user.role === 'admin') {
+          localStorage.setItem('valid', true);
           setAdmin(result.data.user);
           navigate('/login/admin-dashboard');
         }
