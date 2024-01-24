@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import path from 'path';
 import productRoutes from './src/product/routes/product.routes.js';
 import {
@@ -17,6 +18,7 @@ dotenv.config({ path: configPath });
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 // configure routes
 app.use('/api/ecommerce/product', productRoutes);
