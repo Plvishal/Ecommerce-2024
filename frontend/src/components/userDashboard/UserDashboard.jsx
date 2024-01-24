@@ -1,6 +1,19 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function UserDashboard() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    axios
+      .get('/api/ecommerce/user/logout')
+      .then((result) => {
+        console.log(result.data);
+        navigate('/login');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className="bg-rose-700  w-full h-screen p-2 ">
@@ -42,8 +55,8 @@ function UserDashboard() {
                   Update Password
                 </Link>
               </li>
-              <li className="w-100">
-                <Link to="" className="nav-link text-white px-0 align-middle">
+              <li className="w-100" onClick={handleLogout}>
+                <Link className="nav-link text-white px-0 align-middle">
                   Logout
                 </Link>
               </li>

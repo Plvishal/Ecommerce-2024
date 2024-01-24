@@ -55,7 +55,7 @@ function Login() {
           onSubmit={handleLoginUser}
         >
           <h3 className="text-center"> Login</h3>
-          <label htmlFor="email" className="label-control">
+          <label htmlFor="email" className="form-label">
             Email
           </label>
           <input
@@ -65,7 +65,7 @@ function Login() {
             className="form-control"
             onChange={handleInputChange}
           />
-          <label htmlFor="password" className="label-control">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
           <input
