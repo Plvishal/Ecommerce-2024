@@ -10,7 +10,7 @@ import userRoutes from './src/user/routes/user.routes.js';
 import cookieParser from 'cookie-parser';
 import orderRoutes from './src/order/routes/order.routes.js';
 
-const configPath = path.resolve( './.env');
+const configPath = path.resolve('./.env');
 
 dotenv.config({ path: configPath });
 
@@ -19,9 +19,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 // configure routes
-app.use('/api/storefleet/product', productRoutes);
-app.use('/api/storefleet/user', userRoutes);
-app.use('/api/storefleet/order', orderRoutes);
+app.use('/api/ecommerce/product', productRoutes);
+app.use('/api/ecommerce/user', userRoutes);
+app.use('/api/ecommerce/order', orderRoutes);
 
 // errorHandlerMiddleware
 app.use(errorHandlerMiddleware);
