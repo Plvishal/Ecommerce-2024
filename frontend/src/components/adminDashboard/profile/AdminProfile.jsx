@@ -3,7 +3,7 @@ import UserContext from '../../../context/userContext';
 
 function AdminProfile() {
   const { admin } = useContext(UserContext);
-  console.log(admin);
+
   return (
     <>
       <div>

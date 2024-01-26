@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import { useEffect, useState } from 'react';
 import AdminProfile from './components/adminDashboard/profile/AdminProfile.jsx';
 import GetAllUsers from './components/adminDashboard/getAllUsers/GetAllUsers.jsx';
+import UserDetails from './components/adminDashboard/userDetails/UserDetails.jsx';
 function App() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -63,7 +64,8 @@ function App() {
                 }
               >
                 <Route index={true} element={<AdminProfile />} />
-                <Route path="get-all-user" element={<GetAllUsers />} />
+                <Route path="get-all-user" element={<GetAllUsers />}></Route>
+                <Route path="details/:id" element={<UserDetails />} />
               </Route>
             </Route>
           </Routes>
