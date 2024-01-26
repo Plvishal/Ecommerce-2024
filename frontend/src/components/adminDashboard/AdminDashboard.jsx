@@ -8,7 +8,9 @@ function AdminDashboard() {
       .get('/api/ecommerce/user/logout')
       .then((result) => {
         localStorage.removeItem('valid');
+
         navigate('/login');
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);

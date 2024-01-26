@@ -1,13 +1,17 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './navbar.css';
 import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 function Navbar() {
   const [state, setState] = useState(false);
+
   const handleClick = () => {
     setState(!state);
   };
   const { user, admin } = useContext(UserContext);
+
+  let per = localStorage.getItem('valid');
+
   return (
     <>
       <nav className="NavbarItems">
@@ -26,16 +30,21 @@ function Navbar() {
               Category
             </Link>
           </li>
-          <li>
-            <Link to="/signup" className="nav-links">
-              Signup
-            </Link>
-          </li>
-          <li>
-            <Link to="/login" className="nav-links">
-              Login
-            </Link>
-          </li>
+
+          {per === null ? (
+            <>
+              <li>
+                <Link to="/signup" className="nav-links">
+                  Signup
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" className="nav-links">
+                  Login
+                </Link>
+              </li>
+            </>
+          ) : null}
           {user && (
             <li>
               <Link to="/login/user-dashboard" className="nav-links">

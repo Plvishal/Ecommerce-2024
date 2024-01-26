@@ -49,7 +49,7 @@ function App() {
                   </PrivateRoute>
                 }
               >
-                <Route path="" element={<Profile />} />
+                <Route index={true} element={<Profile />} />
                 <Route path="get-user-details" element={<GetUserDetails />} />
                 <Route path="update-password" element={<UpdatePassword />} />
                 <Route path="update-profile" element={<UpdateProfile />} />
