@@ -12,6 +12,8 @@ import Profile from './components/userDashboard/profile/Profile.jsx';
 import UserContextProvider from './context/UserContextProvider.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import { useEffect, useState } from 'react';
+import AdminProfile from './components/adminDashboard/profile/AdminProfile.jsx';
+import GetAllUsers from './components/adminDashboard/getAllUsers/GetAllUsers.jsx';
 function App() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -21,7 +23,7 @@ function App() {
   }, []);
 
   return loader ? (
-    <div className="d-flex justify-content-center  align-items-center m-autow-full h-screen  ">
+    <div className="d-flex justify-content-center  align-items-center m-autow-full h-screen bg-slate-400 ">
       <GridLoader
         className="m-auto "
         color="#2230f1"
@@ -59,7 +61,10 @@ function App() {
                     <AdminDashboard />
                   </PrivateRoute>
                 }
-              ></Route>
+              >
+                <Route index={true} element={<AdminProfile />} />
+                <Route path="get-all-user" element={<GetAllUsers />} />
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>
