@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 function Signup() {
   const navigate = useNavigate();
   const [signUp, setSignup] = useState({
@@ -25,7 +26,7 @@ function Signup() {
     formData.password = signUp.password;
     formData.role = signUp.role;
     formData.profileImg = new Object({
-      public_id: 113,
+      public_id: uuid(),
       url: signUp.url,
     });
     axios

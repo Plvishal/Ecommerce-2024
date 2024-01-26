@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './navbar.css';
 import { Link, Outlet } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 function Navbar() {
   const [state, setState] = useState(false);
   const handleClick = () => {
     setState(!state);
   };
+  const { user, admin } = useContext(UserContext);
   return (
     <>
       <nav className="NavbarItems">
@@ -34,16 +36,20 @@ function Navbar() {
               Login
             </Link>
           </li>
-          <li>
-            <Link to="/login/user-dashboard" className="nav-links">
-              User Account
-            </Link>
-          </li>
-          <li>
-            <Link to="/login/admin-dashboard" className="nav-links">
-              Admin Account
-            </Link>
-          </li>
+          {user && (
+            <li>
+              <Link to="/login/user-dashboard" className="nav-links">
+                User Account
+              </Link>
+            </li>
+          )}
+          {admin && (
+            <li>
+              <Link to="/login/admin-dashboard" className="nav-links">
+                Admin Account
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       <Outlet />

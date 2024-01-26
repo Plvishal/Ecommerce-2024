@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { GridLoader } from 'react-spinners';
 import Navbar from './components/navbar/Navbar';
 import { Home, Login, Signup, Category } from './components/pages/pageIndex.js';
 import UserDashboard from './components/userDashboard/UserDashboard.jsx';
@@ -10,11 +11,27 @@ import UpdateProfile from './components/userDashboard/UpdateProfile/UpdateProfil
 import Profile from './components/userDashboard/profile/Profile.jsx';
 import UserContextProvider from './context/UserContextProvider.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import { useEffect, useState } from 'react';
 function App() {
-  return (
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1000);
+  }, []);
+
+  return loader ? (
+    <div className="d-flex justify-content-center  align-items-center m-autow-full h-screen  ">
+      <GridLoader
+        className="m-auto "
+        color="#2230f1"
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
+  ) : (
     <>
       <UserContextProvider>
-        {' '}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Navbar />}>
@@ -37,7 +54,11 @@ function App() {
               </Route>
               <Route
                 path="/login/admin-dashboard"
-                element={<AdminDashboard />}
+                element={
+                  <PrivateRoute>
+                    <AdminDashboard />
+                  </PrivateRoute>
+                }
               ></Route>
             </Route>
           </Routes>
