@@ -31,7 +31,6 @@ function UserDetails() {
       });
   };
 
-  console.log(details);
   return (
     <>
       <div>

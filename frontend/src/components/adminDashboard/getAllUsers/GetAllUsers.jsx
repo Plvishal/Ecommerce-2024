@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function GetAllUsers() {
+  const navigate = useNavigate();
   const [allUser, setAllUser] = useState([]);
   useEffect(() => {
     axios
@@ -14,6 +15,22 @@ function GetAllUsers() {
         console.log(error);
       });
   }, []);
+  const handleDelete = (_id) => {
+    axios
+      .delete('/api/ecommerce/user/admin/delete/' + _id)
+      .then((result) => {
+        console.log(result.data);
+        alert(result.data.msg);
+        if (result.data.success === true) {
+          navigate('/login/admin-dashboard/get-all-user');
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.response.data.msg);
+      });
+  };
 
   return (
     <>
@@ -49,7 +66,12 @@ function GetAllUsers() {
                     >
                       Details
                     </Link>
-                    <button className="btn btn-danger">Delete</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(u._id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
