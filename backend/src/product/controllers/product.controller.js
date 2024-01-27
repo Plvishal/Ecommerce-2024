@@ -31,6 +31,13 @@ export const addNewProduct = async (req, res, next) => {
 
 export const getAllProducts = async (req, res, next) => {
   // Implement the functionality for search, filter and pagination this function.
+
+  const products = await getAllProductsRepo();
+
+  res.send(products);
+};
+export const getAllProductByCategory = async (req, res, next) => {
+  // Implement the functionality for search, filter and pagination this function.
   const { category } = req.body;
 
   const products = await getAllProductsRepo();
