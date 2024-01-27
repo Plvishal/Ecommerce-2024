@@ -4,13 +4,21 @@ import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 function Navbar() {
   const [state, setState] = useState(false);
+  const [hide, setHide] = useState(true);
 
   const handleClick = () => {
     setState(!state);
   };
   const { user, admin } = useContext(UserContext);
 
-  let per = localStorage.getItem('valid');
+  useEffect(() => {
+    if (admin) {
+      setHide(false);
+    }
+    if (user) {
+      setHide(false);
+    }
+  }, [admin, user]);
 
   return (
     <>
@@ -31,7 +39,7 @@ function Navbar() {
             </Link>
           </li>
 
-          {per === null ? (
+          {hide ? (
             <>
               <li>
                 <Link to="/signup" className="nav-links">

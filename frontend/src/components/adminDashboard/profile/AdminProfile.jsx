@@ -3,6 +3,7 @@ import UserContext from '../../../context/userContext';
 
 function AdminProfile() {
   const { admin } = useContext(UserContext);
+  
 
   return (
     <>
@@ -11,7 +12,6 @@ function AdminProfile() {
           <div className="w-full h-full">
             <img
               src={admin.profileImg.url}
-              alt="admin"
               className=" w-auto h-44 m-auto rounded-xl border p-1"
             />
           </div>

@@ -10,13 +10,13 @@ function UserDetails() {
     axios
       .get('/api/ecommerce/user/admin/details/' + id)
       .then((result) => {
-        // console.log(result.data.userDetails);
         setDetails(result.data.userDetails);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
   const handleDelete = () => {
     axios
       .delete('/api/ecommerce/user/admin/delete/' + id)
@@ -31,6 +31,7 @@ function UserDetails() {
       });
   };
 
+  console.log(details);
   return (
     <>
       <div>
