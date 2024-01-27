@@ -16,6 +16,7 @@ import AdminProfile from './components/adminDashboard/profile/AdminProfile.jsx';
 import GetAllUsers from './components/adminDashboard/getAllUsers/GetAllUsers.jsx';
 import UserDetails from './components/adminDashboard/userDetails/UserDetails.jsx';
 import AddProducts from './components/adminDashboard/addProducts/AddProducts.jsx';
+import ProductsDetails from './components/products/ProductsDetails/ProductsDetails.jsx';
 function App() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -40,6 +41,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Navbar />}>
               <Route index="true" element={<Home />}></Route>
+              <Route
+                path="/products/details/:id"
+                element={<ProductsDetails />}
+              ></Route>
               <Route path="/category" element={<Category />}></Route>
               <Route path="/signup" element={<Signup />}></Route>
               <Route path="/login" element={<Login />}></Route>
