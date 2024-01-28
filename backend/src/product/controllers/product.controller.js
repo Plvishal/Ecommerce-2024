@@ -33,6 +33,7 @@ export const getAllProducts = async (req, res, next) => {
   const products = await getAllProductsRepo();
 
   res.send(products);
+  next();
 };
 export const getAllProductByCategory = async (req, res, next) => {
   // Implement the functionality for search, filter and pagination this function.
@@ -45,8 +46,9 @@ export const getAllProductByCategory = async (req, res, next) => {
       return product;
     }
   });
-  console.log(filterProduct);
+  // console.log(filterProduct);
   res.send(filterProduct);
+  next();
 };
 
 export const updateProduct = async (req, res, next) => {

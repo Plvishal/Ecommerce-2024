@@ -2,22 +2,21 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function Category() {
-  const [category, setCategory] = useState({
+  const [loginUser, setLoginUser] = useState({
     category: '',
   });
   const handleInputChange = (e) => {
-    setCategory((curr) => {
-      return { ...curr, [e.target.name]: e.target.value };
+    setLoginUser((currUser) => {
+      return { ...currUser, [e.target.name]: e.target.value };
     });
   };
-
-  const handleSubmit = (e) => {
+  const handleLoginUser = (e) => {
     e.preventDefault();
-    console.log(category);
+
     axios
-      .get('/api/ecommerce/product/by-category', category)
+      .post('/api/ecommerce/product/bycategory', loginUser)
       .then((result) => {
-        console.log(result.data);
+        console.log(result);
       })
       .catch((error) => {
         console.log(error);
@@ -25,23 +24,23 @@ function Category() {
   };
   return (
     <>
-      <div className="bg-pink-700 w-full h-full">
-        <div className="bg-rose-700 w-full h-full relative top-20 p-2">
-          <div className="d-flex align-items-center justify-content-center w-1/5 m-auto">
-            <form onSubmit={handleSubmit}>
+      <div className=" bg-rose-600 h-full w-full">
+        <div className="relative top-20 p-2 bg-rose-600 h-full w-full">
+          <div className="d-flex w-full">
+            <form onSubmit={handleLoginUser} className="d-flex   m-auto">
               <input
-                className="form-control "
                 type="text"
                 id="category"
                 name="category"
+                className="form-control search  "
                 onChange={handleInputChange}
               />
-              <button className="btn btn-success" type="submit">
+
+              <button type="submit" className="btn btn-primary">
                 Search
               </button>
             </form>
           </div>
-          <div className="d-flex"></div>
         </div>
       </div>
     </>

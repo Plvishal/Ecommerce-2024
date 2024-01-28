@@ -32,6 +32,7 @@ export const createNewUser = async (req, res, next) => {
 };
 
 export const userLogin = async (req, res, next) => {
+  console.log(req.body);
   try {
     const { email, password } = req.body;
     if (!email || !password) {
