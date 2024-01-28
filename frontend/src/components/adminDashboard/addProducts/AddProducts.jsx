@@ -37,8 +37,7 @@ function AddProducts() {
         console.log(result.statusText);
         if (result.data.success) {
           alert(result.statusText);
-          navigate('/login/admin-dashboard/add-products');
-          window.location.reload();
+          navigate('/login/admin-dashboard');
         }
       })
       .catch((error) => {
@@ -112,7 +111,15 @@ function AddProducts() {
           >
             <option>choose category</option>
             <option value="Mobile">Mobile</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Clothing">Clothing</option>
             <option value="Electronics">Electronics</option>
+            <option value="Health & Beauty">Health & Beauty</option>
+            <option value="Sports & Outdoors">Sports & Outdoors</option>
+            <option value="Toys & Games">Toys & Games</option>
+            <option value="Books & Media">Books & Media</option>
+            <option value="Electrical Appliances">Electrical Appliances</option>
+            <option value="Furniture">Furniture</option>
           </select>
           <button
             type="submit"

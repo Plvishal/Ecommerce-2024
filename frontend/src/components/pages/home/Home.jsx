@@ -36,11 +36,11 @@ function Home() {
                 ))}
                 <div className="card-body">
                   <h4 className="card-title ">
-                    {p.name.toString().substring(0, 10)}
+                    {`${p.name.toString().substring(0, 40)}...`}
                   </h4>
                   <h6 className="card-text ">{p.price}</h6>
                   <p className="card-subtitle text-justify">
-                    {p.description.toString().substring(0, 10)}...
+                    {p.description.toString().substring(0, 20)}...
                   </p>
                   <div className="d-flex justify-content-between">
                     <Link

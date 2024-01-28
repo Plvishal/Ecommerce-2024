@@ -37,15 +37,17 @@ function ProductsDetails() {
                 }}
               />
             </div>
-            <div className="border p-3 w-full card-body">
-              <h4 className="card-title">{productsDetail.name}</h4>
-              <p className="card-subtitle w-3/5 text-lg text-justify mt-3">
+            <div className="border p-3 w-full card-body overflow-hidden ">
+              <h4 className="card-title w-3/5 text-justify">
+                {productsDetail.name}
+              </h4>
+              <p className="card-subtitle w-full text-lg text-justify mt-3">
                 {productsDetail.description}
               </p>
               <h5 className="card-title mt-2">
                 Price:&nbsp; &#8377;{productsDetail.price}
               </h5>
-              <div className="relative top-28 d-flex justify-content-between ">
+              <div className="relative top-20 d-flex justify-content-between ">
                 <div className="btn btn-danger">
                   In Stocks: {productsDetail.stock}
                 </div>
@@ -84,9 +86,14 @@ function ProductsDetails() {
                       <p className="card-subtitle text-justify">
                         Comment: {rew.comment}
                       </p>
-                      <button className="btn btn-info mt-3">
-                        {rew.rating}stars
-                      </button>
+                      <div className="d-flex justify-content-between align-items-center mt-3">
+                        <button className="btn btn-info">
+                          {rew.rating}stars
+                        </button>
+                        <Link className="text-decoration-none btn btn-info ">
+                          Edit
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );
