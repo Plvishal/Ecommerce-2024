@@ -9,16 +9,18 @@ import {
   getProductDetails,
   rateProduct,
   updateProduct,
+  getAllProductsForAdmin,
 } from '../controllers/product.controller.js';
 import { auth, authByUserRole } from '../../../middlewares/auth.js';
 
 const router = express.Router();
 
 // GET Routes
-router.route('/by-category').get(getAllProductByCategory);
 router.route('/products').get(getAllProducts);
+router.route('/by-category').get(getAllProductByCategory);
 router.route('/details/:id').get(getProductDetails);
 router.route('/reviews/:id').get(getAllReviewsOfAProduct);
+router.route('/getAllProductForAdmin').get(getAllProductsForAdmin);
 
 // POST Routes
 // admin-only

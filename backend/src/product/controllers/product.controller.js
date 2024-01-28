@@ -30,8 +30,6 @@ export const addNewProduct = async (req, res, next) => {
 };
 
 export const getAllProducts = async (req, res, next) => {
-  // Implement the functionality for search, filter and pagination this function.
-
   const products = await getAllProductsRepo();
 
   res.send(products);
@@ -41,6 +39,7 @@ export const getAllProductByCategory = async (req, res, next) => {
   const { category } = req.body;
 
   const products = await getAllProductsRepo();
+
   const filterProduct = products.filter((product) => {
     if (product.category === category) {
       return product;
@@ -182,4 +181,14 @@ export const deleteReview = async (req, res, next) => {
   } catch (error) {
     return next(new ErrorHandler(500, error));
   }
+};
+
+export const getAllProductsForAdmin = async (req, res, next) => {
+  const products = await getAllProductsRepo();
+  const filterAdmin = products.filter((ft) => {
+    if (ft.createdBy === '65925bc30cdc5dafc23200b8') {
+      return ft;
+    }
+  });
+  res.send(filterAdmin);
 };
