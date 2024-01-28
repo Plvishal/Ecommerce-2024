@@ -8,7 +8,6 @@ function Home() {
     axios
       .get('/api/ecommerce/product/products')
       .then((result) => {
-        console.log(result.data);
         setProducts(result.data);
       })
       .catch((error) => {

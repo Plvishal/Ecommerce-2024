@@ -17,6 +17,7 @@ import GetAllUsers from './components/adminDashboard/getAllUsers/GetAllUsers.jsx
 import UserDetails from './components/adminDashboard/userDetails/UserDetails.jsx';
 import AddProducts from './components/adminDashboard/addProducts/AddProducts.jsx';
 import ProductsDetails from './components/products/ProductsDetails/ProductsDetails.jsx';
+import AddReviews from './components/products/addReviews/AddReviews.jsx';
 function App() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -48,6 +49,10 @@ function App() {
               <Route path="/category" element={<Category />}></Route>
               <Route path="/signup" element={<Signup />}></Route>
               <Route path="/login" element={<Login />}></Route>
+              <Route
+                path="/products/reviews/:id"
+                element={<AddReviews />}
+              ></Route>
               <Route
                 path="/login/user-dashboard"
                 element={
