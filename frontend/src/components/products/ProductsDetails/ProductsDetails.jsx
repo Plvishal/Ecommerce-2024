@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function ProductsDetails() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [productsDetail, setProductsDetail] = useState({});
   const [image, setImages] = useState();
@@ -19,6 +20,31 @@ function ProductsDetails() {
         console.log(error);
       });
   }, []);
+  const handleReviewDelete = (r_id, p_id) => {
+    console.log(
+      `/api/ecommerce/product/review/delete?productId=${p_id}&reviewId=${r_id}`
+    );
+    axios
+      .delete(
+        `/api/ecommerce/product/review/delete?productId=${p_id}&reviewId=${r_id}`
+      )
+      .then((result) => {
+        console.log(result);
+        if (result.data.msg) {
+          console.log(result.data.msg);
+          alert(result.data.msg);
+          navigate(`/products/details/` + result.data.product._id);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data.error);
+        if (error.response.data.error === 'login to access this route!') {
+          alert(error.response.data.error);
+          navigate('/login');
+        }
+      });
+  };
+
   return (
     <>
       <div className="bg-rose-700 w-full h-full">
@@ -64,7 +90,7 @@ function ProductsDetails() {
                 <div>
                   <Link
                     className="text-decoration-none btn btn-primary"
-                    to={`/products/reviews/` + productsDetail._id}
+                    to={`/products/add-reviews/` + productsDetail._id}
                   >
                     Add Reviews
                   </Link>
@@ -97,8 +123,13 @@ function ProductsDetails() {
                         <button className="btn btn-info">
                           {rew.rating}stars
                         </button>
-                        <Link className="text-decoration-none btn btn-info ">
-                          Edit
+                        <Link
+                          className="text-decoration-none btn btn-danger "
+                          onClick={() =>
+                            handleReviewDelete(rew._id, productsDetail._id)
+                          }
+                        >
+                          Delete
                         </Link>
                       </div>
                     </div>

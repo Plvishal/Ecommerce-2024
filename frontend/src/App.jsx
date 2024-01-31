@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GridLoader } from 'react-spinners';
 import Navbar from './components/navbar/Navbar';
-import { Home, Login, Signup, Category } from './components/pages/pageIndex.js';
+import { Home, Login, Signup } from './components/pages/pageIndex.js';
 import UserDashboard from './components/userDashboard/UserDashboard.jsx';
 import AdminDashboard from './components/adminDashboard/AdminDashboard.jsx';
 import GetUserDetails from './components/userDashboard/getUserDetails/GetUserDetails.jsx';
@@ -18,6 +18,7 @@ import UserDetails from './components/adminDashboard/userDetails/UserDetails.jsx
 import AddProducts from './components/adminDashboard/addProducts/AddProducts.jsx';
 import ProductsDetails from './components/products/ProductsDetails/ProductsDetails.jsx';
 import AddReviews from './components/products/addReviews/AddReviews.jsx';
+
 function App() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -46,13 +47,14 @@ function App() {
                 path="/products/details/:id"
                 element={<ProductsDetails />}
               ></Route>
-              <Route path="/category" element={<Category />}></Route>
+
               <Route path="/signup" element={<Signup />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route
-                path="/products/reviews/:id"
+                path="/products/add-reviews/:id"
                 element={<AddReviews />}
               ></Route>
+
               <Route
                 path="/login/user-dashboard"
                 element={

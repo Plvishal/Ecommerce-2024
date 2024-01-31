@@ -110,16 +110,16 @@ function AddProducts() {
             className="form-select"
           >
             <option>choose category</option>
-            <option value="Mobile">Mobile</option>
-            <option value="Shoes">Shoes</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Health & Beauty">Health & Beauty</option>
-            <option value="Sports & Outdoors">Sports & Outdoors</option>
-            <option value="Toys & Games">Toys & Games</option>
-            <option value="Books & Media">Books & Media</option>
-            <option value="Electrical Appliances">Electrical Appliances</option>
-            <option value="Furniture">Furniture</option>
+            <option value="mobile">mobile</option>
+            <option value="shoes">shoes</option>
+            <option value="clothing">clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="health & beauty">Health & Beauty</option>
+            <option value="sports & outdoors">Sports & Outdoors</option>
+            <option value="toys & games">Toys & Games</option>
+            <option value="books & media">Books & Media</option>
+            <option value="electrical appliances">Electrical Appliances</option>
+            <option value="furniture">Furniture</option>
           </select>
           <button
             type="submit"

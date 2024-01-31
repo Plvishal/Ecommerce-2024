@@ -33,11 +33,6 @@ function Navbar() {
               Home
             </Link>
           </li>
-          <li>
-            <Link to="/category" className="nav-links">
-              Category
-            </Link>
-          </li>
 
           {hide ? (
             <>
