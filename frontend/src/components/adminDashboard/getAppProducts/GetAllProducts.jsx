@@ -60,6 +60,12 @@ function GetAllProducts() {
                     >
                       Details
                     </Link>
+                    <Link
+                      className="btn btn-primary me-2"
+                      to={`/products/edit/` + p._id}
+                    >
+                      Edit
+                    </Link>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(p._id)}

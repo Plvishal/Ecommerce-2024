@@ -19,6 +19,7 @@ import AddProducts from './components/adminDashboard/addProducts/AddProducts.jsx
 import ProductsDetails from './components/products/ProductsDetails/ProductsDetails.jsx';
 import AddReviews from './components/products/addReviews/AddReviews.jsx';
 import GetAllProducts from './components/adminDashboard/getAppProducts/GetAllProducts.jsx';
+import EditProducts from './components/adminDashboard/editProducts/EditProducts.jsx';
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -47,6 +48,10 @@ function App() {
               <Route
                 path="/products/details/:id"
                 element={<ProductsDetails />}
+              ></Route>
+              <Route
+                path="/products/edit/:id"
+                element={<EditProducts />}
               ></Route>
 
               <Route path="/signup" element={<Signup />}></Route>
