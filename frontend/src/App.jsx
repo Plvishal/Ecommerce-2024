@@ -18,6 +18,7 @@ import UserDetails from './components/adminDashboard/userDetails/UserDetails.jsx
 import AddProducts from './components/adminDashboard/addProducts/AddProducts.jsx';
 import ProductsDetails from './components/products/ProductsDetails/ProductsDetails.jsx';
 import AddReviews from './components/products/addReviews/AddReviews.jsx';
+import GetAllProducts from './components/adminDashboard/getAppProducts/GetAllProducts.jsx';
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -80,6 +81,10 @@ function App() {
                 <Route path="get-all-user" element={<GetAllUsers />}></Route>
                 <Route path="details/:id" element={<UserDetails />} />
                 <Route path="add-products" element={<AddProducts />}></Route>
+                <Route
+                  path="all-products-info"
+                  element={<GetAllProducts />}
+                ></Route>
               </Route>
             </Route>
           </Routes>

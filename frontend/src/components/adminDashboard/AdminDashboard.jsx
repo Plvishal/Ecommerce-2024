@@ -49,6 +49,14 @@ function AdminDashboard() {
                   Add Product
                 </Link>
               </li>
+              <li className="w-100">
+                <Link
+                  to="/login/admin-dashboard/all-products-info"
+                  className="nav-link text-white px-0 align-middle"
+                >
+                  All Product Info
+                </Link>
+              </li>
 
               <li className="w-100" onClick={handleLogout}>
                 <Link className="nav-link text-white px-0 align-middle">
